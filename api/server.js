@@ -1,28 +1,33 @@
-// 🟢 Import
+// Libraries
 const express = require("express");
+
+const logger = require('morgan');
 const helmet = require("helmet");
 const cors = require("cors");
-const logger = require('morgan');
-const authRouter = require('./auth/auth-router');
+
+const AuthRouter = require('./auth/auth-router');
+const UsersRouter = require('./users/users-router');
+
 require('dotenv').config();
 
-// 🟢 Server
+// Server
 const server = express();
 
-// 🟢 Global Middlewares
+// Global Middlewares
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use(logger('dev'));
 
-// 🟢 Routers
-server.use("/api/auth", authRouter);
+// Routers
+server.use("/api/auth", AuthRouter);
+server.use("/api/users", UsersRouter);
 
-// 🟢 Global Error Middleware
+// Global Error Middleware
 server.use((err, req, res, next) => {
     // eslint-disable-line
-    res.status(err.status || 500).json({ message: err.message || "SERVER ERROR!...."});
+    res.status(err.status || 500).json({ message: err.message || "SERVER ERROR!...." });
 });
 
-// 🟢 Export
+// Export
 module.exports = server;
