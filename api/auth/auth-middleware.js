@@ -1,5 +1,7 @@
 const UserModel = require('../../api/users/users-model');
 const bcrypt = require("bcryptjs");
+const tokenHelper = require('../../helper/token-helper.js')
+const jwt = require("jsonwebtoken");
 
 const checkRegisterPayload = async (req, res, next) => {
     const { name, nick, email, password } = req.body;
@@ -15,8 +17,8 @@ const checkRegisterPayload = async (req, res, next) => {
 };
 
 const checkLoginPayload = async (req, res, next) => {
-    const { name, email, password } = req.body;
-    if (name || email && password) {
+    const { nick, email, password } = req.body;
+    if (nick || email && password || nick.length > 128 || email.length > 128 || password.length > 128) {
         next();
     } else {
         res.status(404).json({ message: "Please check your informations." })
@@ -44,12 +46,12 @@ const userNickAndMailExist = async (req, res, next) => {
 
 const loginValidate = async (req, res, next) => {
     try {
-        const { email, name } = req.body;
+        const { email, nick } = req.body;
         let userMail;
-        let userName;
+        let userNick;
         if (email) { userMail = await UserModel.getUserByMail(email) };
-        if (name) { userName = await UserModel.getUserByName(name) };
-        const user = userMail || userName;
+        if (nick) { userNick = await UserModel.getUserByNick(nick) };
+        const user = userMail || userNick;
         if (!user) {
             res.status(404).json({ message: "No user found with the information you provided... or can try to login :)" });
         } else {
@@ -66,18 +68,40 @@ const loginValidate = async (req, res, next) => {
     };
 };
 
-const checkRole = (role) = (req, res, next) => {
+const protected = (req, res, next) => {
     try {
-        //  to do: checkRole Middleware eklenecek...
+        const token = req.headers["authorization"];
+        if (!token) {
+            res.status(401).json({ message: "Token gereklidir" });
+        } else {
+            jwt.verify(token, tokenHelper.JWT_SECRET, async (err, decodedToken) => {
+                if (err) {
+                    // await tokenHelper.deleteFromBlackListToken(token)
+                    res.status(401).json({ message: "Token geçersiz" });
+                } else {
+                    req.decodedToken = decodedToken;
+                    next();
+                };
+            });
+        };
     } catch (error) {
         next(error);
-    }
+    };
+};
+
+const checkRole = (existrole) => (req, res, next) => {
+    if (req.decodedToken.role == existrole || req.decodedToken.role == "admin") {
+        next()
+    } else {
+        next({ status: 403, message: "Buraya giriş izniniz yok!.." })
+    };
 };
 
 module.exports = {
     checkRegisterPayload,
-    loginValidate,
+    checkLoginPayload,
     userNickAndMailExist,
-    checkRole,
-    checkLoginPayload
+    loginValidate,
+    protected,
+    checkRole
 }

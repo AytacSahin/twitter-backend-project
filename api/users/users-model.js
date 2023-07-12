@@ -1,14 +1,25 @@
 const db = require('../../data/db-config');
 
-function getAll() {
+function getAllOnlyAdmin() {
     // SELECT * FROM users 
     return db('users');
+};
+
+function getAll() {
+    // SELECT * FROM users 
+    return db('users').select("user_id", "name", "email", "nick");
+};
+
+async function getUserByIdOnlyAdmin(user_id) {
+    // SELECT * FROM users u
+    // WHERE u.user_id = 2
+    return await db('users').where({ user_id }).first(); // alternatif: ...where({ user_id: user_id })
 };
 
 async function getUserById(user_id) {
     // SELECT * FROM users u
     // WHERE u.user_id = 2
-    return await db('users').where({ user_id }).first(); // alternatif: ...where({ user_id: user_id })
+    return await db('users').where({ user_id }).select("user_id", "name", "email", "nick").first(); // alternatif: ...where({ user_id: user_id })
 };
 
 async function getUserByNick(nick) {
@@ -29,6 +40,14 @@ async function getUserByMail(email) {
     return await db('users').where({ email }).first(); // alternatif: ...where({ mail: mail })
 };
 
+async function removeUserOnlyAdmin(id) {
+    return await db('users').where("user_id", id).delete(); 
+};
+
+async function update(id, payload) {
+    return await db('users').where("user_id", id).update(payload); 
+};
+
 // to do: en son filtreleme model'i yaz 11.07.23 ders kaydında var:
 // async function getUserByFilter(filter) {
 //     return await db('users').where(filter).first(); // alternatif: ...where({ filter: filter })
@@ -39,10 +58,14 @@ async function insert(newUser) {
 };
 
 module.exports = {
+    getAllOnlyAdmin,
     getAll,
+    getUserByIdOnlyAdmin,
     getUserById,
     getUserByName,
     getUserByNick,
     getUserByMail,
-    insert
+    insert,
+    removeUserOnlyAdmin,
+    update
 };

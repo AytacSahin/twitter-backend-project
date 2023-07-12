@@ -8,6 +8,8 @@ const cors = require("cors");
 const AuthRouter = require('./auth/auth-router');
 const UsersRouter = require('./users/users-router');
 
+const { protected } = require('../api/auth/auth-middleware');
+
 require('dotenv').config();
 
 // Server
@@ -21,7 +23,7 @@ server.use(logger('dev'));
 
 // Routers
 server.use("/api/auth", AuthRouter);
-server.use("/api/users", UsersRouter);
+server.use("/api/users", protected, UsersRouter);
 
 // Global Error Middleware
 server.use((err, req, res, next) => {

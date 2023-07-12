@@ -1,18 +1,20 @@
 const router = require("express").Router();
-const { checkRegisterPayload, userNickAndMailExist, checkLoginPayload, loginValidate } = require('./auth-middleware');
-const UserModel = require('../../api/users/users-model');
+const { checkRegisterPayload, userNickAndMailExist, checkLoginPayload, loginValidate } = require("./auth-middleware");
+const UserModel = require("../../api/users/users-model");
 const bcrypt = require("bcryptjs");
+const tokenHelper = require("../../helper/token-helper");
 
 router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req, res, next) => {
     try {
-        let { name, nick, email, password } = req.body
+        let { name, nick, email, password, role } = req.body
         const hashedPassword = bcrypt.hashSync(password, 8);
 
         let newUser = {
             name: name,
             nick: nick,
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            role: role,
         };
 
         await UserModel.insert(newUser);
@@ -26,8 +28,10 @@ router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { //
     try {
         let tokenPayload = {
             id: req.currentUser.user_id,
-            name: req.currentUser.name
+            name: req.currentUser.name,
+            role: req.currentUser.role
         }
+        const token = tokenHelper.generateToken(tokenPayload);
         res.json({ message: `Welcome back, dear ${req.currentUser.name}...`, token: token });
     } catch (error) {
         next(error);
