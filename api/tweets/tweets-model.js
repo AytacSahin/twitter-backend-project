@@ -81,6 +81,10 @@ async function createNewTweet(tweet) {
     return getTweetsByTweetId(tweet_id);
 };
 
+async function removeTweet(tweet_id) {
+    return await db('tweets').where("tweet_id", tweet_id).delete();
+};
+
 module.exports = {
     getAllTweets,
     getTweetsByUserId,
@@ -88,5 +92,6 @@ module.exports = {
     update,
     getTweetsByTweetId,
     findUserIdByTweetId,
-    createNewTweet
+    createNewTweet,
+    removeTweet
 };

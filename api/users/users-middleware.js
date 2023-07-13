@@ -30,5 +30,5 @@ async function validateUserId(req, res, next) {
 
 module.exports = {
     validateUserIdAdmin,
-    validateUserId
+    validateUserId,
 }

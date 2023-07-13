@@ -40,7 +40,7 @@ async function getUserByMail(email) {
     return await db('users').where({ email }).first(); // alternatif: ...where({ mail: mail })
 };
 
-async function removeUserOnlyAdmin(id) {
+async function removeUser(id) {
     return await db('users').where("user_id", id).delete();
 };
 
@@ -61,6 +61,6 @@ module.exports = {
     getUserByNick,
     getUserByMail,
     insert,
-    removeUserOnlyAdmin,
+    removeUser,
     update
 };

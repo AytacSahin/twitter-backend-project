@@ -22,7 +22,7 @@ const checkRegisterPayload = async (req, res, next) => {
 
 const checkLoginPayload = async (req, res, next) => {
     const { nick, email, password } = req.body;
-    if (nick || email && password || nick.length > 128 || email.length > 128 || password.length > 128) {
+    if (nick || email && password) {
         next();
     } else {
         res.status(404).json({ message: "Please check your informations." })
@@ -76,12 +76,12 @@ const protected = (req, res, next) => {
     try {
         const token = req.headers["authorization"];
         if (!token) {
-            res.status(401).json({ message: "Token gereklidir" });
+            res.status(401).json({ message: "Token is required..." });
         } else {
             jwt.verify(token, tokenHelper.JWT_SECRET, async (err, decodedToken) => {
                 if (err) {
                     // await tokenHelper.deleteFromBlackListToken(token)
-                    res.status(401).json({ message: "Token geçersiz" });
+                    res.status(401).json({ message: "Token is invalid..." });
                 } else {
                     req.decodedToken = decodedToken;
                     next();
@@ -101,11 +101,25 @@ const checkRole = (existrole) => (req, res, next) => {
     };
 };
 
+const onlyForExistingUser = (req, res, next) => {
+    try {
+        const { id } = req.params
+        if (req.decodedToken.user_id == id || req.decodedToken.role == "admin") {
+            next()
+        } else {
+            next({ status: 403, message: "Yetkiniz yok!.." })
+        };
+    } catch (error) {
+        next(error);
+    };
+};
+
 module.exports = {
     checkRegisterPayload,
     checkLoginPayload,
     userNickAndMailExist,
     loginValidate,
     protected,
-    checkRole
+    checkRole,
+    onlyForExistingUser
 }

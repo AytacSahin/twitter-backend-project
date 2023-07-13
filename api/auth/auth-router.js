@@ -25,7 +25,7 @@ router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { //
     try {
         let tokenPayload = {
             user_id: req.currentUser.user_id,
-            name: req.currentUser.name,
+            nick: req.currentUser.nick,
             role: req.currentUser.role
         }
         const token = tokenHelper.generateToken(tokenPayload);
