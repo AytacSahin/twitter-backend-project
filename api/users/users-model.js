@@ -41,17 +41,12 @@ async function getUserByMail(email) {
 };
 
 async function removeUserOnlyAdmin(id) {
-    return await db('users').where("user_id", id).delete(); 
+    return await db('users').where("user_id", id).delete();
 };
 
 async function update(id, payload) {
-    return await db('users').where("user_id", id).update(payload); 
+    return await db('users').where("user_id", id).update(payload);
 };
-
-// to do: en son filtreleme model'i yaz 11.07.23 ders kaydında var:
-// async function getUserByFilter(filter) {
-//     return await db('users').where(filter).first(); // alternatif: ...where({ filter: filter })
-// };
 
 async function insert(newUser) {
     await db("users").insert(newUser);

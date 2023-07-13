@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const AuthRouter = require('./auth/auth-router');
 const UsersRouter = require('./users/users-router');
+const TweetsRouter = require('./tweets/tweets-router');
 
 const { protected } = require('../api/auth/auth-middleware');
 
@@ -24,6 +25,7 @@ server.use(logger('dev'));
 // Routers
 server.use("/api/auth", AuthRouter);
 server.use("/api/users", protected, UsersRouter);
+server.use("/api/tweets", protected, TweetsRouter);
 
 // Global Error Middleware
 server.use((err, req, res, next) => {

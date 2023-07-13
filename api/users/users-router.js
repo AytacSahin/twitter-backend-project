@@ -41,13 +41,12 @@ router.get('/:id', checkRole("user"), validateUserId, async (req, res, next) => 
 router.put('/:id', validateUserId, async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, email, nick, role, password } = req.body
         const updatedUser = {
-            name: name,
-            email: email,
-            nick: nick,
-            role: role,
-            password: password,
+            name: req.body.name,
+            email: req.body.email,
+            nick: req.body.nick,
+            role: req.body.role,
+            password: req.body.password,
         };
         let insertedUser = {};
         for (const key in updatedUser) {

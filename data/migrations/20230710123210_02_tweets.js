@@ -7,7 +7,7 @@ exports.up = function (knex) {
         .createTable('tweets', tbl => {
             tbl.increments('tweet_id')
             tbl.string('content').notNullable()
-            tbl.integer('likes')
+            tbl.integer('likes').defaultTo(0)
             tbl.integer('user_id')
                 .references('user_id')
                 .inTable('users')

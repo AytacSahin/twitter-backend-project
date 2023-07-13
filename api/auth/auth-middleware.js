@@ -5,7 +5,11 @@ const jwt = require("jsonwebtoken");
 
 const checkRegisterPayload = async (req, res, next) => {
     const { name, nick, email, password } = req.body;
-    if (!name || !nick || !email || !password || name.length > 128 || nick.length > 128 || email.length > 128 || password.length > 128) {
+    if (
+        !name || !nick || !email || !password ||
+        name.trim().length > 128 || nick.trim().length > 128 || email.trim().length > 128 || password.trim().length > 128 ||
+        name.trim().length < 3 || nick.trim().length < 3 || email.trim().length < 3 || password.trim().length < 3
+    ) {
         res.status(400).json({ message: "Please check your informations." })
     } else {
         next();

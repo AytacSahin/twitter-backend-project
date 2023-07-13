@@ -6,19 +6,16 @@ const tokenHelper = require("../../helper/token-helper");
 
 router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req, res, next) => {
     try {
-        let { name, nick, email, password, role } = req.body
-        const hashedPassword = bcrypt.hashSync(password, 8);
-
+        const hashedPassword = bcrypt.hashSync(req.body.password, 8);
         let newUser = {
-            name: name,
-            nick: nick,
-            email: email,
+            name: req.body.name.trim(),
+            nick: req.body.nick.trim(),
+            email: req.body.email.trim(),
             password: hashedPassword,
-            role: role,
+            role: req.body.role,
         };
-
         await UserModel.insert(newUser);
-        res.status(201).json({ message: `Welcome to twitter, dear ${name}...` });
+        res.status(201).json({ message: `Welcome to twitter, dear ${newUser.name}...` });
     } catch (error) {
         next({ status: 400, message: "Create user error..." }); // to do: bu şekilde error middleware'a yolculuk yap. Diğer tüm middleware'larda da err middleware'a obje gönder.
     };
@@ -27,7 +24,7 @@ router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req,
 router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { // to do check login payload
     try {
         let tokenPayload = {
-            id: req.currentUser.user_id,
+            user_id: req.currentUser.user_id,
             name: req.currentUser.name,
             role: req.currentUser.role
         }
