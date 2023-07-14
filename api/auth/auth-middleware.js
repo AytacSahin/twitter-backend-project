@@ -122,4 +122,4 @@ module.exports = {
     protected,
     checkRole,
     onlyForExistingUser
-}
+};

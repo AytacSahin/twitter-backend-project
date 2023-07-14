@@ -7,7 +7,7 @@ exports.up = function (knex) {
         .createTable('comments', tbl => {
             tbl.increments('comment_id')
             tbl.string('content').notNullable()
-            tbl.integer('likes')
+            tbl.integer('likes').defaultTo(0)
             tbl.timestamps(true, true);
             tbl.integer('user_id')
                 .references('user_id')

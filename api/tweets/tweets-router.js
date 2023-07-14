@@ -1,15 +1,24 @@
 const router = require('express').Router();
 const TweetModel = require('./tweets-model');
-const { checkTweetIsExist, checkTweetID, onlyForExistingUserTw } = require('./tweets-middleware');
-const { onlyForExistingUser, checkRole } = require('../auth/auth-middleware');
+const { checkTweetIsExist, checkTweetID, onlyForExistingUserTw, checkTweetCreatePayload } = require('./tweets-middleware');
+const { checkRole } = require('../auth/auth-middleware');
 const { validateUserId } = require('../users/users-middleware');
 
-router.get('/', async (req, res, next) => {
+router.get('/admin', checkRole("admin"), async (req, res, next) => {
     try {
         const allTweets = await TweetModel.getAllTweets();
         res.json(allTweets);
     } catch (error) {
         next({ status: 400, message: "Can not get tweets.." });
+    };
+});
+
+router.get('/admin/users-tweets', checkRole("admin"), async (req, res, next) => {
+    try {
+        const userTweetsModel = await TweetModel.getUsersWithTweets();
+        res.json(userTweetsModel);
+    } catch (error) {
+        next({ status: 400, message: "Server error..." });
     };
 });
 
@@ -21,16 +30,20 @@ router.get('/user/:id', validateUserId, checkTweetIsExist, async (req, res, next
     };
 });
 
-router.get('/users-tweets', async (req, res, next) => {
+router.get('/mypage', checkRole("user"), async (req, res, next) => {
     try {
-        const userTweetsModel = await TweetModel.getUsersWithTweets();
-        res.json(userTweetsModel);
+        const homeModel = await TweetModel.getMyHomePage(req.decodedToken.user_id);
+        if (!homeModel || homeModel.length == 0) {
+            res.json({ message: "User has not followings and own tweets..." });
+        } else {
+            res.json(homeModel)
+        };
     } catch (error) {
-
+        next({ status: 400, message: "Server error..." });
     };
 });
 
-router.put('/:id', checkTweetID, async (req, res, next) => {
+router.put('/:id', checkTweetID, checkRole("user"), async (req, res, next) => {
     try {
         let existingId = await TweetModel.findUserIdByTweetId(req.params.id)
         if (req.decodedToken.user_id == existingId.user_id) {
@@ -53,10 +66,9 @@ router.put('/:id', checkTweetID, async (req, res, next) => {
     };
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", checkTweetCreatePayload, checkRole("user"), async (req, res, next) => {
     try {
-        let tweet = { content: req.body.content, user_id: Number(req.decodedToken.user_id) };
-        let result = await TweetModel.createNewTweet(tweet);
+        let result = await TweetModel.createNewTweet(req.newTweet);
         res.json(result);
     } catch (error) {
         next(error)
@@ -65,8 +77,7 @@ router.post("/", async (req, res, next) => {
 
 router.delete('/:id', checkTweetID, checkRole("user"), onlyForExistingUserTw, async (req, res, next) => {
     try {
-        const tweet_id = req.params.id;
-        const isDeleted = await TweetModel.removeTweet(tweet_id);
+        const isDeleted = await TweetModel.removeTweet(req.params.id);
         if (isDeleted) {
             res.json({ message: `Tweet id ${tweet_id}, deleted...` })
         } else {
