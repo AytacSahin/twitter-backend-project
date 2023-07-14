@@ -13,31 +13,31 @@ function getAll() {
 async function getUserByIdOnlyAdmin(user_id) {
     // SELECT * FROM users u
     // WHERE u.user_id = 2
-    return await db('users').where({ user_id }).first(); // alternatif: ...where({ user_id: user_id })
+    return await db('users').where({ user_id }).first();
 };
 
 async function getUserById(user_id) {
     // SELECT * FROM users u
     // WHERE u.user_id = 2
-    return await db('users').where({ user_id }).select("user_id", "name", "email", "nick").first(); // alternatif: ...where({ user_id: user_id })
+    return await db('users').where({ user_id }).select("user_id", "name", "email", "nick").first();
 };
 
 async function getUserByNick(nick) {
     // SELECT * FROM users u
     // WHERE u.nick = aytac
-    return await db('users').where({ nick }).first(); // alternatif: ...where({ name: name })
+    return await db('users').where({ nick }).first();
 };
 
 async function getUserByName(name) {
     // SELECT * FROM users u
     // WHERE u.name = aytac
-    return await db('users').where({ name }).first(); // alternatif: ...where({ name: name })
+    return await db('users').where({ name }).first();
 };
 
 async function getUserByMail(email) {
     // SELECT * FROM users u
     // WHERE u.mail = aytac@aytac.com.tr
-    return await db('users').where({ email }).first(); // alternatif: ...where({ mail: mail })
+    return await db('users').where({ email }).first();
 };
 
 async function removeUser(id) {

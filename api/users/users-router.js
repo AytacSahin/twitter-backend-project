@@ -43,7 +43,7 @@ router.put('/:id', validateUserId, checkRole("user"), onlyForExistingUser, async
         const updatedUser = {
             name: req.body.name,
             email: req.body.email,
-            nick: req.body.nick, // to do: diğer kullanıcılardan birinin nick'ini gönder bakalım ne oluyor ??? 
+            nick: req.body.nick,
             password: req.body.password,
         };
         let insertedUser = {};
@@ -62,7 +62,7 @@ router.put('/:id', validateUserId, checkRole("user"), onlyForExistingUser, async
             res.status(400).json({ message: `Error in updating User id ${id}!..` })
         };
     } catch (err) {
-        next({ status: 400, message: "Update error..." });
+        next(error);
     };
 });
 

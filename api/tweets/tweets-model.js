@@ -46,11 +46,11 @@ async function getMyHomePage(id) {
         .leftJoin("follows as f", "f.following_user_id", "t.user_id")
         .select("t.tweet_id", "t.content", "t.likes", "t.user_id", "t.likes", "t.created_at", "t.updated_at")
         .where("f.user_id", id)
-    console.log("1 model", model);
-    let pageOwnerModel = await getTweetsByUserId(id);
-    console.log("2 pageOwnerModel", pageOwnerModel);
-    const result = pageOwnerModel.concat(model);
-    return result;
+        console.log("1 model", model);
+        let pageOwnerModel = await getTweetsByUserId(id);
+        console.log("2 pageOwnerModel", pageOwnerModel);
+        const result = pageOwnerModel.concat(model);
+        return result;
 };
 
 async function getUsersWithTweets() {

@@ -11,7 +11,7 @@ const checkTweetIsExist = async (req, res, next) => {
             next();
         }
     } catch (error) {
-        next({ status: 400, message: "Can not get tweets.." });
+        next(error);
     };
 }
 
@@ -31,7 +31,7 @@ async function checkTweetID(req, res, next) {
 
 async function checkTweetCreatePayload(req, res, next) {
     try {
-        const newComment = req.body.content; // user_id tokendan alınacak
+        const newComment = req.body.content;
         if (newComment) {
             let tweet = {
                 user_id: Number(req.decodedToken.user_id),
@@ -40,7 +40,7 @@ async function checkTweetCreatePayload(req, res, next) {
             req.newComment = tweet;
             next()
         } else {
-            res.status(400).json({ message: "Please text a type some content!..." });
+            next(error);
         }
     } catch (error) {
         next(error);
@@ -52,7 +52,7 @@ const onlyForExistingUserTw = async (req, res, next) => {
         if (req.decodedToken.role == "admin") {
             next();
         } if (req.tweet.user_id !== req.decodedToken.user_id) {
-            next({ status: 403, message: "Yetkiniz yok!.." });
+            next({ status: 403, message: "You are not authorized!.." });
         } else {
             next();
         };

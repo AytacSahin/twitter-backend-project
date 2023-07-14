@@ -26,7 +26,7 @@ function findUserIdByCommentId(comment_id) {
         .select("user_id").first();
 };
 
-async function update(comment_id, payload) {
+async function updateComment(comment_id, payload) {
     return await db('comments').where("comment_id", comment_id).update(payload);
 };
 
@@ -44,7 +44,7 @@ module.exports = {
     getCommentsByTwId,
     getCommentByCommentId,
     findUserIdByCommentId,
-    update,
+    updateComment,
     removeComment,
     createNewComment
 };

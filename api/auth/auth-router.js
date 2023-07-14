@@ -11,13 +11,12 @@ router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req,
             name: req.body.name.trim(),
             nick: req.body.nick.trim(),
             email: req.body.email.trim(),
-            password: hashedPassword,
-            role: req.body.role,
+            password: hashedPassword
         };
         await UserModel.insert(newUser);
         res.status(201).json({ message: `Welcome to twitter, dear ${newUser.name}...` });
     } catch (error) {
-        next({ status: 400, message: "Create user error..." }); // to do: bu şekilde error middleware'a yolculuk yap. Diğer tüm middleware'larda da err middleware'a obje gönder.
+        next(error);
     };
 });
 

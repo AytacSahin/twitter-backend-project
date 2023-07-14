@@ -9,7 +9,7 @@ router.get('/admin', checkRole("admin"), async (req, res, next) => {
         const allComments = await CommentModel.getAllComments();
         res.json(allComments);
     } catch (error) {
-        next({ status: 400, message: "Can not get comments.." });
+        next(error);
     };
 });
 
@@ -18,7 +18,7 @@ router.get('/:id', checkRole("user"), async (req, res, next) => {
         const idComments = await CommentModel.getCommentsByTwId(req.params.id);
         res.json(idComments);
     } catch (error) {
-        next({ status: 400, message: "Can not get comments.." });
+        next(error);
     };
 });
 
@@ -29,7 +29,7 @@ router.put('/:id', checkCommentIsExist, checkRole("user"), whoIsComment, async (
             content: req.body.content,
             updated_at: new Date().toISOString().replace("T", " ").slice(0, 19)
         };
-        const updated = await CommentModel.update(id, updatedContent);
+        const updated = await CommentModel.updateComment(id, updatedContent);
 
         if (updated) {
             res.json({ message: `Comment id ${id}, updated...` })
@@ -37,7 +37,7 @@ router.put('/:id', checkCommentIsExist, checkRole("user"), whoIsComment, async (
             res.status(400).json({ message: `Error in updating Comment id ${id}!..` })
         };
     } catch (err) {
-        next({ status: 400, message: "Update error..." });
+        next(error);
     };
 });
 
@@ -46,7 +46,7 @@ router.post("/:id", checkTweetID, checkCommentCreatePayload, checkRole("user"), 
         let result = await CommentModel.createNewComment(req.newComment);
         res.json(result);
     } catch (error) {
-        next(error)
+        next(error);
     };
 });
 

@@ -11,7 +11,7 @@ const checkCommentIsExist = async (req, res, next) => {
             next();
         }
     } catch (error) {
-        next({ status: 400, message: "Can not get comments.." });
+        next(error);
     };
 };
 
@@ -21,10 +21,10 @@ const whoIsComment = async (req, res, next) => {
         if (req.decodedToken.user_id == UserId.user_id || req.decodedToken.role == "admin") {
             next();
         } else {
-            res.json({message: "Yetkiniz yok!..."})
+            res.json({ message: "You are not authorized!..." })
         }
     } catch (error) {
-        next({ status: 400, message: "Can not get comment.." });
+        next(error);
     };
 };
 

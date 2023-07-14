@@ -16,7 +16,7 @@ const checkRegisterPayload = async (req, res, next) => {
     };
     try {
     } catch (error) {
-        next(error);
+        next();
     };
 };
 
@@ -29,7 +29,7 @@ const checkLoginPayload = async (req, res, next) => {
     };
     try {
     } catch (error) {
-        next(error);
+        next();
     };
 };
 
@@ -44,7 +44,7 @@ const userNickAndMailExist = async (req, res, next) => {
             res.status(404).json({ message: `Please change your ${isExistNick ? "nick" : "" || isExistMail ? "mail" : ""} and try again...` });
         };
     } catch (error) {
-        next(error);
+        next();
     };
 };
 
@@ -68,7 +68,7 @@ const loginValidate = async (req, res, next) => {
             };
         };
     } catch (error) {
-        next({ status: 400, message: "Login error..." });
+        next();
     };
 };
 
@@ -89,15 +89,19 @@ const protected = (req, res, next) => {
             });
         };
     } catch (error) {
-        next(error);
+        next();
     };
 };
 
 const checkRole = (existrole) => (req, res, next) => {
-    if (req.decodedToken.role == existrole || req.decodedToken.role == "admin") {
-        next()
-    } else {
-        next({ status: 403, message: "Buraya giriş izniniz yok!.." })
+    try {
+        if (req.decodedToken.role == existrole || req.decodedToken.role == "admin") {
+            next()
+        } else {
+            next(error);
+        };
+    } catch (error) {
+        next();
     };
 };
 
@@ -107,7 +111,7 @@ const onlyForExistingUser = (req, res, next) => {
         if (req.decodedToken.user_id == id || req.decodedToken.role == "admin") {
             next()
         } else {
-            next({ status: 403, message: "Yetkiniz yok!.." })
+            next({ status: 403, message: "You are not authorized!.." })
         };
     } catch (error) {
         next(error);
