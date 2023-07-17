@@ -10,8 +10,8 @@ const checkCommentIsExist = async (req, res, next) => {
             req.comment = comment;
             next();
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -23,8 +23,8 @@ const whoIsComment = async (req, res, next) => {
         } else {
             res.json({ message: "You are not authorized!..." })
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -43,8 +43,8 @@ async function checkCommentCreatePayload(req, res, next) {
         } else {
             res.status(400).json({ message: "Please text a type some content!..." });
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 

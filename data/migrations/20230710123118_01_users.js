@@ -11,8 +11,8 @@ exports.up = function (knex) {
             tbl.string('nick', 128).notNullable().unique()
             tbl.string('password', 128).notNullable()
             tbl.string('role').defaultTo('user')
-        })
-};
+        });
+}; 
 
 /**
  * @param { import("knex").Knex } knex

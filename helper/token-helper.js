@@ -1,4 +1,4 @@
-const JWT_SECRET = process.env.JWT_SECRET || "topSecret";
+const { JWT_SECRET } = require('../config/index');
 const jwt = require("jsonwebtoken");
 const db = require('../data/db-config');
 

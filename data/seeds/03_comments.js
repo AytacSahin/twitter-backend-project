@@ -11,6 +11,7 @@ const defaultComments = [
 
 exports.users = defaultComments;
 
-exports.seed = function (knex) {
-  return knex('comments').insert(defaultComments);
-};
+exports.seed = async function (knex) {
+  await knex('comments').truncate()
+  await knex('comments').insert(defaultComments);
+}; 

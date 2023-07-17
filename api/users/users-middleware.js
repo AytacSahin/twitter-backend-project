@@ -9,8 +9,8 @@ async function validateUserIdAdmin(req, res, next) {
         } else {
             res.status(404).json({ message: "User is not defined" });
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -23,8 +23,8 @@ async function validateUserId(req, res, next) {
         } else {
             res.status(404).json({ message: "User is not defined" });
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 

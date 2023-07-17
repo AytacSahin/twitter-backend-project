@@ -8,8 +8,8 @@ router.get('/admin', checkRole("admin"), async (req, res, next) => {
     try {
         const allComments = await CommentModel.getAllComments();
         res.json(allComments);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -17,8 +17,8 @@ router.get('/:id', checkRole("user"), async (req, res, next) => {
     try {
         const idComments = await CommentModel.getCommentsByTwId(req.params.id);
         res.json(idComments);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -37,7 +37,7 @@ router.put('/:id', checkCommentIsExist, checkRole("user"), whoIsComment, async (
             res.status(400).json({ message: `Error in updating Comment id ${id}!..` })
         };
     } catch (err) {
-        next(error);
+        next(err);
     };
 });
 
@@ -45,8 +45,8 @@ router.post("/:id", checkTweetID, checkCommentCreatePayload, checkRole("user"), 
     try {
         let result = await CommentModel.createNewComment(req.newComment);
         res.json(result);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 

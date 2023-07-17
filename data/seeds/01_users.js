@@ -8,6 +8,7 @@ const defaultUsers = [
 
 exports.users = defaultUsers;
 
-exports.seed = function (knex) {
-  return knex('users').insert(defaultUsers);
-};
+exports.seed = async function (knex) {
+  await knex('users').truncate()
+  await knex('users').insert(defaultUsers);
+}; 

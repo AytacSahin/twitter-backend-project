@@ -10,9 +10,7 @@ const UsersRouter = require('./users/users-router');
 const TweetsRouter = require('./tweets/tweets-router');
 const CommentsRouter = require('./comments/comments-router');
 
-const { protected } = require('../api/auth/auth-middleware');
-
-require('dotenv').config();
+const { restricted } = require('../api/auth/auth-middleware');
 
 // Server
 const server = express();
@@ -25,9 +23,9 @@ server.use(logger('dev'));
 
 // Routers
 server.use("/api/auth", AuthRouter);
-server.use("/api/users", protected, UsersRouter);
-server.use("/api/tweets", protected, TweetsRouter);
-server.use("/api/comments", protected, CommentsRouter);
+server.use("/api/users", restricted, UsersRouter);
+server.use("/api/tweets", restricted, TweetsRouter);
+server.use("/api/comments", restricted, CommentsRouter);
 
 // Global Error Middleware
 server.use((err, req, res, next) => {

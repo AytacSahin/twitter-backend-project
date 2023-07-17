@@ -4,19 +4,27 @@ const tokenHelper = require('../../helper/token-helper.js')
 const jwt = require("jsonwebtoken");
 
 const checkRegisterPayload = async (req, res, next) => {
-    const { name, nick, email, password } = req.body;
-    if (
-        !name || !nick || !email || !password ||
-        name.trim().length > 128 || nick.trim().length > 128 || email.trim().length > 128 || password.trim().length > 128 ||
-        name.trim().length < 3 || nick.trim().length < 3 || email.trim().length < 3 || password.trim().length < 3
-    ) {
-        res.status(400).json({ message: "Please check your informations." })
-    } else {
-        next();
-    };
     try {
-    } catch (error) {
-        next();
+        const { name, nick, email, password } = req.body;
+        if (!name || !name.trim() || name.trim().length <= 3) {
+            next({ status: 400, message: "name, must be greater than 3 characters!..." });
+        } else if (name.trim().length > 128) {
+            next({ status: 400, message: "name, cannot exceed 128 characters!..." });
+        } else if (!nick || !nick.trim() || nick.length <= 3) {
+            next({ status: 400, message: "nick, must be greater than 3 characters!..." });
+        } else if (nick.trim().length > 128) {
+            next({ status: 400, message: "nick, cannot exceed 128 characters!..." });
+        } else if (!email || !isValidEmail(email)) {
+            next({ status: 400, message: "please enter a valid e-mail!..." });
+        } else if (!password || !password.trim() || password.length <= 3) {
+            next({ status: 400, message: "password, must be greater than 3 characters!..." });
+        } else if (password.trim().length > 128) {
+            next({ status: 400, message: "password, cannot exceed 128 characters!..." });
+        } else {
+            next();
+        };
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -28,8 +36,8 @@ const checkLoginPayload = async (req, res, next) => {
         res.status(404).json({ message: "Please check your informations." })
     };
     try {
-    } catch (error) {
-        next();
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -43,8 +51,8 @@ const userNickAndMailExist = async (req, res, next) => {
         } else {
             res.status(404).json({ message: `Please change your ${isExistNick ? "nick" : "" || isExistMail ? "mail" : ""} and try again...` });
         };
-    } catch (error) {
-        next();
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -67,12 +75,12 @@ const loginValidate = async (req, res, next) => {
                 res.status(400).json({ message: "Password is incorrect... Please try again :)" })
             };
         };
-    } catch (error) {
-        next();
+    } catch (err) {
+        next(err);
     };
 };
 
-const protected = (req, res, next) => {
+const restricted = (req, res, next) => {
     try {
         const token = req.headers["authorization"];
         if (!token) {
@@ -88,8 +96,8 @@ const protected = (req, res, next) => {
                 };
             });
         };
-    } catch (error) {
-        next();
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -98,10 +106,10 @@ const checkRole = (existrole) => (req, res, next) => {
         if (req.decodedToken.role == existrole || req.decodedToken.role == "admin") {
             next()
         } else {
-            next(error);
+            next({ status: 403, message: "You are not authorized!.." });
         };
-    } catch (error) {
-        next();
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -113,17 +121,26 @@ const onlyForExistingUser = (req, res, next) => {
         } else {
             next({ status: 403, message: "You are not authorized!.." })
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
+
+const isValidEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+}
 
 module.exports = {
     checkRegisterPayload,
     checkLoginPayload,
     userNickAndMailExist,
     loginValidate,
-    protected,
+    restricted,
     checkRole,
-    onlyForExistingUser
+    onlyForExistingUser,
+    isValidEmail
 };

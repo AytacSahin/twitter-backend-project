@@ -55,14 +55,18 @@ router.put('/:id', validateUserId, checkRole("user"), onlyForExistingUser, async
         if (updatedUser.password) {
             insertedUser.password = bcrypt.hashSync(req.body.password, 8);
         };
-        const updated = await UserModel.update(id, insertedUser);
-        if (updated) {
-            res.json({ message: `User id ${id} is updated... Due to the change of user information, the relevant user must login again...` })
-        } else {
+        try {
+            const updated = await UserModel.update(id, insertedUser);
+            if (updated) {
+                res.json({ message: `User id ${id} is updated... Due to the change of user information, the relevant user must login again...` })
+            } else {
+                res.status(400).json({ message: `Error in updating User id ${id}!..` })
+            };
+        } catch (err) {
             res.status(400).json({ message: `Error in updating User id ${id}!..` })
-        };
+        }
     } catch (err) {
-        next(error);
+        next(err);
     };
 });
 

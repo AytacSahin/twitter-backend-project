@@ -15,8 +15,8 @@ router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req,
         };
         await UserModel.insert(newUser);
         res.status(201).json({ message: `Welcome to twitter, dear ${newUser.name}...` });
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -29,24 +29,24 @@ router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { //
         }
         const token = tokenHelper.generateToken(tokenPayload);
         res.json({ message: `Welcome back, dear ${req.currentUser.name}...`, token: token });
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
 // router.post('/password/reset', (req, res, next) => {
 //     try {
 //         res.json({ message: "password/reset" });
-//     } catch (error) {
-//         next(error);
+//     } catch (err) {
+//         next(err);
 //     };
 // });
 
 // router.get('/logout', (req, res, next) => {
 //     try {
 //         res.json({ message: "logout" });
-//     } catch (error) {
-//         next(error);
+//     } catch (err) {
+//         next(err);
 //     };
 // });
 

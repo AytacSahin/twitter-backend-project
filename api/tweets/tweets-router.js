@@ -8,8 +8,8 @@ router.get('/admin', checkRole("admin"), async (req, res, next) => {
     try {
         const allTweets = await TweetModel.getAllTweets();
         res.json(allTweets);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -17,16 +17,16 @@ router.get('/admin/users-tweets', checkRole("admin"), async (req, res, next) => 
     try {
         const userTweetsModel = await TweetModel.getUsersWithTweets();
         res.json(userTweetsModel);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
 router.get('/user/:id', validateUserId, checkTweetIsExist, async (req, res, next) => {
     try {
         res.json(req.tweets);
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -38,8 +38,8 @@ router.get('/mypage', checkRole("user"), async (req, res, next) => {
         } else {
             res.json(homeModel)
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -61,8 +61,8 @@ router.put('/:id', checkTweetID, checkRole("user"), async (req, res, next) => {
         } else {
             res.json({ message: "You can not update this tweet!..." });
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 
@@ -70,8 +70,8 @@ router.post("/", checkTweetCreatePayload, checkRole("user"), async (req, res, ne
     try {
         let result = await TweetModel.createNewTweet(req.newTweet);
         res.json(result);
-    } catch (error) {
-        next(error)
+    } catch (err) {
+        next(err)
     };
 });
 
@@ -83,8 +83,8 @@ router.delete('/:id', checkTweetID, checkRole("user"), onlyForExistingUserTw, as
         } else {
             res.status(400).json({ message: `Error in deleting tweet id ${tweet_id}!..` })
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 });
 

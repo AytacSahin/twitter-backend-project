@@ -10,8 +10,8 @@ const checkTweetIsExist = async (req, res, next) => {
             req.tweets = allTweets;
             next();
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 }
 
@@ -24,8 +24,8 @@ async function checkTweetID(req, res, next) {
             req.tweet = tweet;
             next();
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -40,10 +40,10 @@ async function checkTweetCreatePayload(req, res, next) {
             req.newComment = tweet;
             next()
         } else {
-            next(error);
+            next(err);
         }
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 
@@ -56,8 +56,8 @@ const onlyForExistingUserTw = async (req, res, next) => {
         } else {
             next();
         };
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        next(err);
     };
 };
 

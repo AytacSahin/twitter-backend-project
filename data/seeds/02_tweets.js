@@ -10,6 +10,7 @@ const defaultTweets = [
 
 exports.users = defaultTweets;
 
-exports.seed = function (knex) {
-  return knex('tweets').insert(defaultTweets);
-};
+exports.seed = async function (knex) {
+  await knex('tweets').truncate()
+  await knex('tweets').insert(defaultTweets);
+}; 
