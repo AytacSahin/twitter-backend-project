@@ -91,7 +91,7 @@ describe('UPDATE USER WITH ID & PAYLOAD', () => {
             await UserModel.update(4, { nick: "aytac" });
         } catch (err) {
             expect(err.message).toMatch(/unique constraint failed/i);
-        }
+        };
     });
 });
 
@@ -108,7 +108,7 @@ describe('INSERT NEW USER WITH PAYLOAD', () => {
         const addedUser = await UserModel.getUserById(newUserId[0])
         expect(addedUser).toHaveProperty("nick", "test");
     });
-    test('[11] can not insert a new user with same mail existing on other users', async () => {
+    test('[13] can not insert a new user with same mail existing on other users', async () => {
         try {
             await UserModel.insert({
                 name: "test",
@@ -118,6 +118,6 @@ describe('INSERT NEW USER WITH PAYLOAD', () => {
             });
         } catch (err) {
             expect(err.message).toMatch(/unique constraint failed/i);
-        }
+        };
     });
 });

@@ -97,8 +97,3 @@ describe('USER methods', () => {
         expect(user.name).toMatch(/cinali/i);
     });
 });
-
-// örnekler:
-// expect(res.body).toHaveProperty("contents", "Guess who said this");
-// expect(res.body).toHaveLength(9);
-// expect(res.body.message).toEqual("Lütfen gönderi için bir title ve contents sağlayın");
