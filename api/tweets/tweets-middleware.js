@@ -5,7 +5,7 @@ const checkTweetIsExist = async (req, res, next) => {
         const { id } = req.params;
         const allTweets = await TweetModel.getTweetsByUserId(id);
         if (!allTweets || allTweets.length == 0) {
-            res.json({ message: `User id ${id}, has not tweet yet...` })
+            res.status(404).json({ message: `User id ${id}, has not tweet yet...` })
         } else {
             req.tweets = allTweets;
             next();

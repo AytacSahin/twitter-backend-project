@@ -84,7 +84,7 @@ const restricted = async (req, res, next) => {
     try {
         const token = req.headers["authorization"];
         if (!token) {
-            res.status(401).json({ message: "Token is required..." });
+            res.status(400).json({ message: "Token is required..." });
         } else {
             const tokenCash = await tokenHelper.verifyCashToken(token);
             if (tokenCash) {

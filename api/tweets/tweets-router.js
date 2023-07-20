@@ -34,7 +34,7 @@ router.get('/mypage', checkRole("user"), async (req, res, next) => {
     try {
         const homeModel = await TweetModel.getMyHomePage(req.decodedToken.user_id);
         if (!homeModel || homeModel.length == 0) {
-            res.json({ message: "User has not followings and own tweets..." });
+            res.status(404).json({ message: "User has not followings and own tweets..." });
         } else {
             res.json(homeModel)
         };
@@ -59,7 +59,7 @@ router.put('/:id', checkTweetID, checkRole("user"), async (req, res, next) => {
                 res.status(400).json({ message: `Error in updating Tweet id ${id}!..` })
             };
         } else {
-            res.json({ message: "You can not update this tweet!..." });
+            res.status(403).json({ message: "You can not update this tweet!..." });
         }
     } catch (err) {
         next(err);

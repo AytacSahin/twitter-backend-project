@@ -34,14 +34,6 @@ router.post('/login', checkLoginPayload, loginValidate, async (req, res, next) =
     };
 });
 
-// router.post('/password/reset', (req, res, next) => {
-//     try {
-//         res.json({ message: "password/reset" });
-//     } catch (err) {
-//         next(err);
-//     };
-// });
-
 router.get('/logout', restricted, (req, res, next) => {
     try {
         const token = req.headers.authorization;

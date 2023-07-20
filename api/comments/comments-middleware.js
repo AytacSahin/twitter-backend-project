@@ -5,7 +5,7 @@ const checkCommentIsExist = async (req, res, next) => {
         const { id } = req.params;
         const comment = await CommentModel.getCommentByCommentId(id);
         if (!comment || comment.length == 0) {
-            res.json({ message: `Comment is not exist...` })
+            res.status(404).json({ message: `Comment is not exist...` })
         } else {
             req.comment = comment;
             next();
@@ -21,7 +21,7 @@ const whoIsComment = async (req, res, next) => {
         if (req.decodedToken.user_id == UserId.user_id || req.decodedToken.role == "admin") {
             next();
         } else {
-            res.json({ message: "You are not authorized!..." })
+            res.status(403).json({ message: "You are not authorized!..." })
         }
     } catch (err) {
         next(err);

@@ -2,8 +2,6 @@ const { JWT_SECRET } = require('../config/index');
 const jwt = require("jsonwebtoken");
 const db = require('../data/db-config');
 const { createClient } = require('redis');
-// const client = redis.createClient();
-// import { createClient } from 'redis';
 
 const client = createClient({
     password: 'UKo1ZU1kYk6ioTfHZOYV2zQ3UZcaOjnm',
@@ -47,5 +45,4 @@ module.exports = {
     generateToken,
     verifyCashToken,
     deleteTokenInCash,
-    client
 };
