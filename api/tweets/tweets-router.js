@@ -79,9 +79,9 @@ router.delete('/:id', checkTweetID, checkRole("user"), onlyForExistingUserTw, as
     try {
         const isDeleted = await TweetModel.removeTweet(req.params.id);
         if (isDeleted) {
-            res.json({ message: `Tweet id ${tweet_id}, deleted...` })
+            res.json({ message: `Tweet id ${req.params.id}, deleted...` })
         } else {
-            res.status(400).json({ message: `Error in deleting tweet id ${tweet_id}!..` })
+            res.status(400).json({ message: `Error in deleting tweet id ${req.params.id}!..` })
         };
     } catch (err) {
         next(err);

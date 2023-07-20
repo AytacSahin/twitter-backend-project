@@ -26,16 +26,6 @@ function findUserIdByTweetId(tweet_id) {
         .select("user_id").first();
 };
 
-async function findFollowers() {
-    // SELECT following_user_id FROM follows as f
-    // WHERE user_id = 3
-    const model = await db("users as u")
-        .leftJoin("tweets as t", "u.user_id", "t.user_id")
-        .select("u.user_id", "u.nick", "t.tweet_id", "t.content", "t.likes", "t.created_at")
-        .orderBy('u.user_id')
-    return model;
-};
-
 async function getMyHomePage(id) {
 
     // SELECT * FROM tweets t
@@ -46,11 +36,9 @@ async function getMyHomePage(id) {
         .leftJoin("follows as f", "f.following_user_id", "t.user_id")
         .select("t.tweet_id", "t.content", "t.likes", "t.user_id", "t.likes", "t.created_at", "t.updated_at")
         .where("f.user_id", id)
-        console.log("1 model", model);
-        let pageOwnerModel = await getTweetsByUserId(id);
-        console.log("2 pageOwnerModel", pageOwnerModel);
-        const result = pageOwnerModel.concat(model);
-        return result;
+    let pageOwnerModel = await getTweetsByUserId(id);
+    const result = pageOwnerModel.concat(model);
+    return result;
 };
 
 async function getUsersWithTweets() {
@@ -125,5 +113,4 @@ module.exports = {
     createNewTweet,
     removeTweet,
     getMyHomePage,
-    findFollowers
 };

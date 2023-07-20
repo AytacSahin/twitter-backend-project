@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "a0749b07-df38-4ed0-b885-143be0ab7193",
+		"name": "S16-Twitter-BackEnd-Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27161740",
+		"_collection_link": "https://speeding-resonance-742066.postman.co/workspace/Team-Workspace~6a653c01-eb16-4870-8ff3-d1488cf79b6d/collection/27161740-a0749b07-df38-4ed0-b885-143be0ab7193?action=share&creator=27161740&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "1-api/auth/ Register New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\": \"test1@test1.com.tr\",\r\n    \"nick\": \"test1\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2-api/auth/ Login Exist User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nick\": \"test11\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3-api/auth/ Logout Exist User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/auth/password/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4-api/auth/ Pass Reset Exist User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/users/admin Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/users/admin/:id Get User By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users/admin/15",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"15"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/users/admin/:id Delete User By ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyNTQzNDIsImV4cCI6MTY4OTM0MDc0Mn0.Eb6M68jnVnuJn12xK-Lu25a9cx-fj2zG6FxV5xGnDyo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/users/:id Update User By ID & Payload",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"nick\":\"yeni\",\"email\":\"yeni@yeni.com.tr\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/users/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/users/ Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/users/:id Get User By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/users/:id Delete User By ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/users/admin/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/users/:id Update User By ID & Payload",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"nick\":\"yeni\",\"email\":\"yeni@yeni.com.tr\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/users/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tweets",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/tweets/admin Get All Tweets",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/admin/tweets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"admin",
+										"tweets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2]  api/tweets/admin/users-tweets Get All Tweets with Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/tweets/users-tweets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets",
+										"users-tweets"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/tweets/user/:id Get Tweets By User ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/tweets/user/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets",
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/tweets/mypage Get Following User's Tweets",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/tweets/mypage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets",
+										"mypage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/tweets/:id Update Tweet with Tweet ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/tweets/999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/tweets Create New Tweet",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test 1'in yeni tweet'i\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/tweets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[5] /api/tweets/tweet/:id Delete Tweet",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/tweets/tweet/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"tweets",
+										"tweet",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/comments/admin Get All Comments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/comments/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"comments",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/comments/:id Get Comment's of One Tweet With ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/comments/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"comments",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/comments/:id Update Comment with Comment ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/comments/:id Delete Comment with Comment ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/comments/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"comments",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/comments/ Create new Comment with User ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

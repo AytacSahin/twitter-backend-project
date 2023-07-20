@@ -80,21 +80,26 @@ const loginValidate = async (req, res, next) => {
     };
 };
 
-const restricted = (req, res, next) => {
+const restricted = async (req, res, next) => {
     try {
         const token = req.headers["authorization"];
         if (!token) {
             res.status(401).json({ message: "Token is required..." });
         } else {
-            jwt.verify(token, tokenHelper.JWT_SECRET, async (err, decodedToken) => {
-                if (err) {
-                    // await tokenHelper.deleteFromBlackListToken(token)
-                    res.status(401).json({ message: "Token is invalid..." });
-                } else {
-                    req.decodedToken = decodedToken;
-                    next();
-                };
-            });
+            const tokenCash = await tokenHelper.verifyCashToken(token);
+            // const tokenCash = tokenHelper.verifyCashToken(token); await ekledim............................................................
+            if (tokenCash) {
+                jwt.verify(token, tokenHelper.JWT_SECRET, async (err, decodedToken) => {
+                    if (err) {
+                        res.status(401).json({ message: "Token is invalid..." });
+                    } else {
+                        req.decodedToken = decodedToken;
+                        next();
+                    }
+                });
+            } else {
+                res.status(401).json({ message: "Token is expired..." });
+            };
         };
     } catch (err) {
         next(err);

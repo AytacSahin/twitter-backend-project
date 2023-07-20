@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { checkRegisterPayload, userNickAndMailExist, checkLoginPayload, loginValidate } = require("./auth-middleware");
+const { checkRegisterPayload, userNickAndMailExist, checkLoginPayload, loginValidate, restricted } = require("./auth-middleware");
 const UserModel = require("../../api/users/users-model");
 const bcrypt = require("bcryptjs");
 const tokenHelper = require("../../helper/token-helper");
@@ -20,14 +20,14 @@ router.post('/register', checkRegisterPayload, userNickAndMailExist, async (req,
     };
 });
 
-router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { // to do check login payload
+router.post('/login', checkLoginPayload, loginValidate, async (req, res, next) => { // to do check login payload
     try {
         let tokenPayload = {
             user_id: req.currentUser.user_id,
             nick: req.currentUser.nick,
             role: req.currentUser.role
         }
-        const token = tokenHelper.generateToken(tokenPayload);
+        const token = await tokenHelper.generateToken(tokenPayload);
         res.json({ message: `Welcome back, dear ${req.currentUser.name}...`, token: token });
     } catch (err) {
         next(err);
@@ -42,12 +42,15 @@ router.post('/login', checkLoginPayload, loginValidate, (req, res, next) => { //
 //     };
 // });
 
-// router.get('/logout', (req, res, next) => {
-//     try {
-//         res.json({ message: "logout" });
-//     } catch (err) {
-//         next(err);
-//     };
-// });
+router.get('/logout', restricted, (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        const userNick = req.decodedToken.nick
+        tokenHelper.deleteTokenInCash(token);
+        res.json({ message: `Bye bye ... ${userNick}...` });
+    } catch (err) {
+        next(err);
+    };
+});
 
 module.exports = router;

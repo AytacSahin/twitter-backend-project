@@ -31,13 +31,13 @@ async function checkTweetID(req, res, next) {
 
 async function checkTweetCreatePayload(req, res, next) {
     try {
-        const newComment = req.body.content;
-        if (newComment) {
-            let tweet = {
+        const newTw = req.body.content;
+        if (newTw) {
+            let newTweet = {
                 user_id: Number(req.decodedToken.user_id),
-                content: newComment
+                content: newTw
             };
-            req.newComment = tweet;
+            req.newTweet = newTweet;
             next()
         } else {
             next(err);

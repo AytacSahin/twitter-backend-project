@@ -33,7 +33,6 @@ describe('ADMIN methods', () => {
     });
     test('[2] ADMIN / can get all tweets with user informations', async () => {
         const res = await request(server).get('/api/tweets/admin/users-tweets').set('Authorization', token);
-        console.log("123456", res.body)
         expect(res.body.length).toBe(4);
     });
 });
@@ -71,7 +70,6 @@ describe('USER methods', () => {
     });
     test("[8] USER / user creates a new tweet", async () => {
         const res = await request(server).post('/api/tweets').send({ content: "new new new" }).set('Authorization', token);
-        console.log("9999", res.body)
         expect(res.body).toHaveProperty("content", "new new new");
     });
     test("[9] USER / user can delete his/her own tweet", async () => {

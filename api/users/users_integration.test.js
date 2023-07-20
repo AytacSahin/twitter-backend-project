@@ -47,7 +47,6 @@ describe('ADMIN methods', () => {
     test('[5] ADMIN / can update one user by ID', async () => {
         await request(server).put('/api/users/2').send({ name: "cinali" }).set('Authorization', token);
         const res = await request(server).get('/api/users/admin/2').set('Authorization', token);
-        console.log("1234", res.body);
         expect(res.body).toHaveProperty("name", "cinali");
     });
     test('[6] ADMIN / cannot delete a user that does not exist', async () => {
