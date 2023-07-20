@@ -87,7 +87,6 @@ const restricted = async (req, res, next) => {
             res.status(401).json({ message: "Token is required..." });
         } else {
             const tokenCash = await tokenHelper.verifyCashToken(token);
-            // const tokenCash = tokenHelper.verifyCashToken(token); await ekledim............................................................
             if (tokenCash) {
                 jwt.verify(token, tokenHelper.JWT_SECRET, async (err, decodedToken) => {
                     if (err) {

@@ -19,11 +19,11 @@ const connection = async () => {
 connection();
 
 client.on('connect', () => {
-    console.log('Redis client connected...')
+    console.log('Redis client connected...');
 });
 
 client.on('error', (err) => {
-    console.log('Error in Redis client...' + err)
+    console.log('Error in Redis client...' + err);
 });
 
 async function generateToken(payload) {
