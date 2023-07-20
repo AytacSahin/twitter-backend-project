@@ -13,11 +13,6 @@ const client = createClient({
     }
 });
 
-const connection = async () => {
-    await client.connect();
-};
-connection();
-
 client.on('connect', () => {
     console.log('Redis client connected...');
 });
@@ -28,17 +23,23 @@ client.on('error', (err) => {
 
 async function generateToken(payload) {
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1d" })
+    await client.connect();
     await client.set(token, 1, { EX: 60 * 60 * 24 })
+    await client.disconnect();
     return token;
 };
 
 async function verifyCashToken(token) {
-    const tokenCash = await client.get(token)
+    await client.connect();
+    const tokenCash = await client.get(token);
+    await client.disconnect();
     return tokenCash;
 };
 
 async function deleteTokenInCash(token) {
+    await client.connect();
     await client.del(token);
+    await client.disconnect();
 };
 
 module.exports = {
@@ -46,52 +47,5 @@ module.exports = {
     generateToken,
     verifyCashToken,
     deleteTokenInCash,
-    // checkIsInsertBlackList
+    client
 };
-
-
-
-
-
-// const { JWT_SECRET } = require('../config/index');
-// const jwt = require("jsonwebtoken");
-// const db = require('../data/db-config');
-// const redis = require('redis');
-// const client = redis.createClient();
-
-// const connection = async () => {
-//     await client.connect();
-// };
-// connection();
-
-// client.on('connect', () => {
-//     console.log('Redis client connected...')
-// });
-
-// client.on('error', (err) => {
-//     console.log('Error in Redis client...' + err)
-// });
-
-// async function generateToken(payload) {
-//     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1d" })
-//     // await client.set(token, 1, { EX: 10 }) .... 10 sn için, çalışıyor ....
-//     await client.set(token, 1, { EX: 60 * 60 * 24 })
-//     return token;
-// };
-
-// async function verifyCashToken(token) {
-//     const tokenCash = await client.get(token)
-//     return tokenCash;
-// };
-
-// async function deleteTokenInCash(token) {
-//     await client.del(token);
-// };
-
-// module.exports = {
-//     JWT_SECRET: JWT_SECRET,
-//     generateToken,
-//     verifyCashToken,
-//     deleteTokenInCash,
-//     // checkIsInsertBlackList
-// };

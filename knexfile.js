@@ -11,7 +11,7 @@ const sharedConfig = {
   seeds: {
     directory: './data/seeds',
   },
-   // SQLite için aşağıdaki satırları ekliyoruz
+  // SQLite için aşağıdaki satırları ekliyoruz
   useNullAsDefault: true,
   // aşağıdaki satır foreign keys'i SQLite'da aktifleştirir
   pool: {
@@ -29,5 +29,12 @@ module.exports = {
   testing: {
     ...sharedConfig,
     connection: { filename: './data/testing.db3' },
+  },
+  production: {
+    ...sharedConfig,
+    connection: {
+      host: 'https://aytacsahin-twitter-backend.onrender.com',
+      filename: './data/render.db3'
+    },
   },
 }
