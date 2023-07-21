@@ -9,17 +9,22 @@ Bu proje, Twitter benzeri bir sosyal medya platformunun backend kısmını oluş
 Bu adımları projeyi kendi bilgisayarınızda çalıştırmak için izleyebilirsiniz.
 
 1. Depoyu klonlayın:
+
 git clone https://github.com/AytacSahin/twitter-backend-project.git
+
 cd twitter-backend-project
 
 2. Gerekli bağımlılıkları yükleyin:
+
 npm install
 
 
 3. Veritabanını oluşturun ve örnek verileri ekleyin:
+
 npm run resetdb
 
 4. Uygulamayı başlatın:
+
 npm start
 
 Uygulama varsayılan olarak `http://localhost:3000` adresinde çalışacaktır.
@@ -29,26 +34,32 @@ Uygulama varsayılan olarak `http://localhost:3000` adresinde çalışacaktır.
 Proje içinde kullanabileceğiniz bazı komutlar:
 
 - Uygulamayı başlatmak için:
+
 npm start
 
 - Geliştirme modunda uygulamayı başlatmak için (nodemon kullanarak):
+
 npm run server
 
 - Veritabanını oluşturmak için:
+
 npm run migrate
 
 - Veritabanını geri almak için:
+
 npm run rollback
 
 - Örnek verileri veritabanına eklemek için:
+
 npm run seed
 
 - Veritabanını sıfırlamak için (geri alma, oluşturma ve veri ekleme):
+
 npm run resetdb
 
 - Testleri çalıştırmak için:
-npm test
 
+npm test
 
 ## Kullanılan Teknolojiler ve Kütüphaneler
 
@@ -63,7 +74,6 @@ npm test
 - helmet
 - jsonwebtoken
 - morgan
-- nodemailer
 
 ## Hata Bildirimleri ve İletişim
 
