@@ -1,6 +1,8 @@
 # Twitter Backend Projesi
 
-![Booby Image](https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png)
+<div style="display: flex; justify-content: center;">
+  <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="Twitter Logo" style="width: 300px;">
+</div>
 
 Bu proje, Twitter benzeri bir sosyal medya platformunun backend kısmını oluşturan bir Node.js uygulamasıdır.
 
