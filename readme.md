@@ -73,17 +73,17 @@ npm test
 
 ## Kullanılan Teknolojiler ve Kütüphaneler
 
-- Node.js
-- Express.js
-- Knex.js
-- SQLite3
-- Redis
-- bcryptjs
-- cors
-- dotenv
-- helmet
-- jsonwebtoken
-- morgan
+- Node.js: <span style="color: lightgray;">JavaScript çalıştırmak için kullanılan bir çalıştırma zamanı ortamıdır.</span>
+- Express.js: <span style="color: lightgray;">Web uygulamaları ve API'ler oluşturmak için kullanılan hafif bir Node.js web uygulama çerçevesidir.</span>
+- Knex.js: <span style="color: lightgray;">SQL veritabanlarıyla etkileşim için kullanılan bir sorgu yapılandırıcısı ve ORM kütüphanesidir.</span>
+- SQLite3: <span style="color: lightgray;">Gömülü bir SQL veritabanı yönetim sistemi olan SQLite'ın Node.js için bağlantı sürücüsüdür.</span>
+- Redis: <span style="color: lightgray;">Açık kaynaklı bir anahtar-değer veritabanıdır ve hızlı veri depolama ve önbellekleme için kullanılır.</span>
+- bcryptjs: <span style="color: lightgray;">Parolaları güvenli bir şekilde karmaşık bir yapıya dönüştürmek için kullanılan bir şifreleme kütüphanesidir.</span>
+- cors: <span style="color: lightgray;">Tarayıcı güvenliği politikalarını etkileşimli web uygulamaları için geçerli hale getirmek için kullanılır.</span>
+- dotenv: <span style="color: lightgray;">Uygulama yapılandırmasını tutmak için çevresel değişkenleri yönetmek için kullanılır.</span>
+- helmet: <span style="color: lightgray;">HTTP başlık saldırılarına karşı güvenlik sağlamak için Express uygulamaları için bir orta yazılım kütüphanesidir.</span>
+- jsonwebtoken: <span style="color: lightgray;">JSON tabanlı web tokenları oluşturmak ve doğrulamak için kullanılır.</span>
+- morgan: <span style="color: lightgray;">HTTP isteklerini kaydetmek ve loglamak için kullanılan bir HTTP istemci logger'ıdır.</span>
 
 ## Hata Bildirimleri ve İletişim
 
@@ -102,3 +102,4 @@ Proje hakkında daha fazla bilgi için [GitHub Proje Sayfası](https://github.co
 Proje canlı olarak [burada](https://aytacsahin-twitter-backend.onrender.com/) görüntülenebilir.
 
 ---
+
