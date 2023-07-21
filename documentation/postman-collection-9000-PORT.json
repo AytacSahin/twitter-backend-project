@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\": \"test1@test1.com.tr\",\r\n    \"nick\": \"test1\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"user\"\r\n}",
+							"raw": "{\r\n    \"name\": \"test3\",\r\n    \"email\": \"test3@test3.com\",\r\n    \"nick\": \"test3\",\r\n    \"password\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nick\": \"test11\",\r\n    \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n    \"nick\": \"aytac\",\r\n    \"password\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,30 +73,14 @@
 				{
 					"name": "3-api/auth/ Logout Exist User",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:9000/api/auth/password/reset",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "9000",
-							"path": [
-								"api",
-								"auth",
-								"password",
-								"reset"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "4-api/auth/ Pass Reset Exist User",
-					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTg3ODYxOCwiZXhwIjoxNjg5OTY1MDE4fQ.gx_NZru8vu9OeNO17r1dkhyV0xDmzo9lkELPK4RDsRQ",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:9000/api/auth/logout",
 							"protocol": "http",
@@ -128,7 +112,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk4NzMyMDUsImV4cCI6MTY4OTk1OTYwNX0.f6JaIKfTrDL7IYOv4L1vDR6tHWEwV-ltnc2fRRQeqRo",
 										"type": "text"
 									}
 								],
@@ -155,12 +139,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk4OTU2NjksImV4cCI6MTY4OTk4MjA2OX0.r89Z7r5_XEgQgDaByyfqbdIjnmCkiuSPG3Jbt1Nwwew",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/users/admin/15",
+									"raw": "http://localhost:9000/api/users/admin/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -170,7 +154,7 @@
 										"api",
 										"users",
 										"admin",
-										"15"
+										"2"
 									]
 								}
 							},
@@ -183,12 +167,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyNTQzNDIsImV4cCI6MTY4OTM0MDc0Mn0.Eb6M68jnVnuJn12xK-Lu25a9cx-fj2zG6FxV5xGnDyo",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTU3OTgzOSwiZXhwIjoxNjg5NjY2MjM5fQ.grgS1b7YDxEggF5d4eRsuo3u6-SjjLfVXx4qX9UUuAo",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/users/6",
+									"raw": "http://localhost:9000/api/users/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -197,7 +181,7 @@
 									"path": [
 										"api",
 										"users",
-										"6"
+										"5"
 									]
 								}
 							},
@@ -210,13 +194,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuaWNrIjoib3NtYW5jaWsiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTU4OTkyOSwiZXhwIjoxNjg5Njc2MzI5fQ.VkraTnoPQHXvrJhBqtrGgQIcEYQO_ADkQOcGVs9JkHE",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"nick\":\"yeni\",\"email\":\"yeni@yeni.com.tr\"}",
+									"raw": "{\r\n    \"nick\": \"aytac\",\r\n    \"email\": \"test\",\r\n    \"password\": \"1234\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -224,7 +208,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/users/9",
+									"raw": "http://localhost:9000/api/users/4",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -233,7 +217,7 @@
 									"path": [
 										"api",
 										"users",
-										"9"
+										"4"
 									]
 								}
 							},
@@ -251,7 +235,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTg3ODYxOCwiZXhwIjoxNjg5OTY1MDE4fQ.gx_NZru8vu9OeNO17r1dkhyV0xDmzo9lkELPK4RDsRQ",
 										"type": "text"
 									}
 								],
@@ -304,12 +288,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJuaWNrIjoidmVsaTQ5NTAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYxOTE3MiwiZXhwIjoxNjg5NzA1NTcyfQ.VV4IVXg2VGTNarZc7sVjzhHyr5skt5-s59OIMHayV4Q",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/users/admin/12",
+									"raw": "http://localhost:9000/api/users/552",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -318,8 +302,7 @@
 									"path": [
 										"api",
 										"users",
-										"admin",
-										"12"
+										"552"
 									]
 								}
 							},
@@ -332,7 +315,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJuaWNrIjoia2VsX21haG11dCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjg5NjE5NzcxLCJleHAiOjE2ODk3MDYxNzF9.YuKo51bKmEr_DXHAyuwUFDFSLi2PwdeXx_VqLmx-bWs",
 										"type": "text"
 									}
 								],
@@ -346,7 +329,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/users/9",
+									"raw": "http://localhost:9000/api/users/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -355,7 +338,7 @@
 									"path": [
 										"api",
 										"users",
-										"9"
+										"5"
 									]
 								}
 							},
@@ -378,12 +361,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYyNTY0OCwiZXhwIjoxNjg5NzEyMDQ4fQ._pQOUA9fqeuRtvhAGQnphc54WKzYBItxtaZih2Ay4JA",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/admin/tweets",
+									"raw": "http://localhost:9000/api/tweets/admin",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -391,8 +374,8 @@
 									"port": "9000",
 									"path": [
 										"api",
-										"admin",
-										"tweets"
+										"tweets",
+										"admin"
 									]
 								}
 							},
@@ -402,9 +385,15 @@
 							"name": "[2]  api/tweets/admin/users-tweets Get All Tweets with Users",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYyNTY0OCwiZXhwIjoxNjg5NzEyMDQ4fQ._pQOUA9fqeuRtvhAGQnphc54WKzYBItxtaZih2Ay4JA",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:9000/api/tweets/users-tweets",
+									"raw": "http://localhost:9000/api/tweets/admin/users-tweets",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -413,6 +402,7 @@
 									"path": [
 										"api",
 										"tweets",
+										"admin",
 										"users-tweets"
 									]
 								}
@@ -431,12 +421,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk5Mzc0NDAsImV4cCI6MTY5MDAyMzg0MH0.D8B_XDr3eeCJ6VsJ4k3t9D9bDNW9_MMLbfIx8d8YdcM",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/tweets/user/1",
+									"raw": "http://localhost:9000/api/tweets/user/3",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -446,7 +436,7 @@
 										"api",
 										"tweets",
 										"user",
-										"1"
+										"3"
 									]
 								}
 							},
@@ -462,13 +452,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJuaWNrIjoidGVzdDIiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTg3NDk2MSwiZXhwIjoxNjg5OTYxMzYxfQ.CS-8uIfi4oPYWnsnwCXeOSW5lQo_vQ1JEZMSZxvDmv8",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"content\":\"test\"}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -495,10 +485,16 @@
 							"name": "[3] api/tweets/:id Update Tweet with Tweet ID",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYyNTY0OCwiZXhwIjoxNjg5NzEyMDQ4fQ._pQOUA9fqeuRtvhAGQnphc54WKzYBItxtaZih2Ay4JA",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"content\":\"test\"}",
+									"raw": "{\"content\":\"new content\"}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -506,7 +502,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/tweets/999",
+									"raw": "http://localhost:9000/api/tweets/88",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -515,7 +511,7 @@
 									"path": [
 										"api",
 										"tweets",
-										"999"
+										"88"
 									]
 								}
 							},
@@ -528,13 +524,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYzMjIxMiwiZXhwIjoxNjg5NzE4NjEyfQ.p5UhBapHu117j-bsHLDpVkSZH6mS7XFwIM8GEoMXSYs",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"content\":\"test 1'in yeni tweet'i\"}",
+									"raw": "{\"content\":\"Alinin yeni tweeti\"}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -560,10 +556,16 @@
 							"name": "[5] /api/tweets/tweet/:id Delete Tweet",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuaWNrIjoiYWxpXzIwMDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTYzMjIxMiwiZXhwIjoxNjg5NzE4NjEyfQ.p5UhBapHu117j-bsHLDpVkSZH6mS7XFwIM8GEoMXSYs",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"content\":\"test\"}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -571,7 +573,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/tweets/tweet/2",
+									"raw": "http://localhost:9000/api/tweets/3",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -580,8 +582,7 @@
 									"path": [
 										"api",
 										"tweets",
-										"tweet",
-										"2"
+										"3"
 									]
 								}
 							},
@@ -636,12 +637,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk4NzMyMDUsImV4cCI6MTY4OTk1OTYwNX0.f6JaIKfTrDL7IYOv4L1vDR6tHWEwV-ltnc2fRRQeqRo",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:9000/api/comments/admin",
+									"raw": "http://localhost:9000/api/comments/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -650,7 +651,7 @@
 									"path": [
 										"api",
 										"comments",
-										"admin"
+										"2"
 									]
 								}
 							},
@@ -663,7 +664,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuaWNrIjoib3NtYW5jaWsiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTMwMTM0NCwiZXhwIjoxNjg5Mzg3NzQ0fQ.XVY79ViYyDSwN5RsY-J0WBT930pHSgEpFwO1HB3ximM",
 										"type": "text"
 									}
 								],
@@ -677,7 +678,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/comments/1",
+									"raw": "http://localhost:9000/api/comments/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -686,7 +687,7 @@
 									"path": [
 										"api",
 										"comments",
-										"1"
+										"5"
 									]
 								}
 							},
@@ -699,7 +700,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuaWNrIjoib3NtYW5jaWsiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTMwMTM0NCwiZXhwIjoxNjg5Mzg3NzQ0fQ.XVY79ViYyDSwN5RsY-J0WBT930pHSgEpFwO1HB3ximM",
 										"type": "text"
 									}
 								],
@@ -713,7 +714,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/comments/4",
+									"raw": "http://localhost:9000/api/comments/55",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -722,7 +723,7 @@
 									"path": [
 										"api",
 										"comments",
-										"4"
+										"55"
 									]
 								}
 							},
@@ -735,7 +736,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuaWNrIjoib3NtYW5jaWsiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTMwMjg2NywiZXhwIjoxNjg5Mzg5MjY3fQ.U4t676bY1BY7jSCrUDU58OdtYCGqfK1N-sn4LfTDMhI",
 										"type": "text"
 									}
 								],
@@ -749,7 +750,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:9000/api/comments",
+									"raw": "http://localhost:9000/api/comments/6",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -757,7 +758,8 @@
 									"port": "9000",
 									"path": [
 										"api",
-										"comments"
+										"comments",
+										"6"
 									]
 								}
 							},

@@ -1,0 +1,777 @@
+{
+	"info": {
+		"_postman_id": "1977d4c9-8a8d-4870-a502-9f543fcf267a",
+		"name": "S16-Twitter-BackEnd-Project / Render & Redis Live",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27161740",
+		"_collection_link": "https://speeding-resonance-742066.postman.co/workspace/Team-Workspace~6a653c01-eb16-4870-8ff3-d1488cf79b6d/collection/27161740-1977d4c9-8a8d-4870-a502-9f543fcf267a?action=share&creator=27161740&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "1-api/auth/ Register New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test1\",\r\n    \"email\": \"test1@test1.com.tr\",\r\n    \"nick\": \"test1\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://aytacsahin-twitter-backend.onrender.com/api/auth/register",
+							"protocol": "https",
+							"host": [
+								"aytacsahin-twitter-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2-api/auth/ Login Exist User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nick\": \"aytac\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://aytacsahin-twitter-backend.onrender.com/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"aytacsahin-twitter-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3-api/auth/ Logout Exist User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk4OTM0MDksImV4cCI6MTY4OTk3OTgwOX0.A8_tmNRRIneF_9wnbv2FTcCEgSCxfs5XyuvlipBzIDg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://aytacsahin-twitter-backend.onrender.com/api/auth/logout",
+							"protocol": "https",
+							"host": [
+								"aytacsahin-twitter-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/users/admin Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODk4OTU2NjksImV4cCI6MTY4OTk4MjA2OX0.r89Z7r5_XEgQgDaByyfqbdIjnmCkiuSPG3Jbt1Nwwew",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/admin",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/users/admin/:id Get User By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/admin/15",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"15"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/users/admin/:id Delete User By ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyNTQzNDIsImV4cCI6MTY4OTM0MDc0Mn0.Eb6M68jnVnuJn12xK-Lu25a9cx-fj2zG6FxV5xGnDyo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/6",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/users/:id Update User By ID & Payload",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"nick\":\"yeni\",\"email\":\"yeni@yeni.com.tr\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/9",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/users/ Get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/users/:id Get User By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/2",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/users/:id Delete User By ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/admin/12",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/users/:id Update User By ID & Payload",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsIm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTE3MTE1NiwiZXhwIjoxNjg5MjU3NTU2fQ.7h6qJeCAiDvSw-JWn6_XzVnSDd5iRaG59B5InOZajwU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"nick\":\"yeni\",\"email\":\"yeni@yeni.com.tr\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/users/9",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tweets",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/tweets/admin Get All Tweets",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/admin/tweets",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admin",
+										"tweets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2]  api/tweets/admin/users-tweets Get All Tweets with Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets/users-tweets",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets",
+										"users-tweets"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/tweets/user/:id Get Tweets By User ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyODc4NzksImV4cCI6MTY4OTM3NDI3OX0.p0aHieGQRVFsmkdhS6HXFsoPJXo9B3QSUOOnvMrsPtU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets/user/1",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets",
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/tweets/mypage Get Following User's Tweets",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets/mypage",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets",
+										"mypage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/tweets/:id Update Tweet with Tweet ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets/999",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets",
+										"999"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/tweets Create New Tweet",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJuaWNrIjoidGVzdDEiLCJyb2xlIjoidXNlciIsImlhdCI6MTY4OTI4MDY5OCwiZXhwIjoxNjg5MzY3MDk4fQ.pFYJojuTgRQerVydq9Ld7wcIxYwQMeHotzBOIH7C7v0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test 1'in yeni tweet'i\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[5] /api/tweets/tweet/:id Delete Tweet",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\":\"test\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/tweets/tweet/2",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"tweets",
+										"tweet",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "[1] api/comments/admin Get All Comments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/comments/admin",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User & Admin",
+					"item": [
+						{
+							"name": "[1] api/comments/:id Get Comment's of One Tweet With ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/comments/admin",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"comments",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[2] api/comments/:id Update Comment with Comment ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/comments/1",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[3] api/comments/:id Delete Comment with Comment ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/comments/4",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[4] api/comments/ Create new Comment with User ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuaWNrIjoiYXl0YWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODkyOTY3MzcsImV4cCI6MTY4OTM4MzEzN30.ynw-pB__MYHEWx9YV_HDwF3hvQwM-4x3X1GWtEUH8RU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"content\": \"yeni içerik\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aytacsahin-twitter-backend.onrender.com/api/comments",
+									"protocol": "https",
+									"host": [
+										"aytacsahin-twitter-backend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
